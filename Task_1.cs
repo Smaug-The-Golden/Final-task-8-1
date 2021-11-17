@@ -10,15 +10,8 @@ namespace Final_task_8_1
             Console.WriteLine(DateTime.Now);
             double erase_time = TimeSelect();
             string dir_path = DirSelect();
-            var duration = DateTime.Now - Directory.GetLastAccessTime(dir_path);
-            var duration2 = TimeSpan.FromMinutes(erase_time);
-            int check = TimeSpan.Compare(duration, duration2);
 
-            Console.WriteLine($"Значение переменной duration: {duration}");
-            Console.WriteLine($"Значение переменной duration2: {duration2}");
-            Console.WriteLine($"Значение переменной check: {check}");
-
-            if (check >= 1)
+            if (TimeSpan.Compare((DateTime.Now - Directory.GetLastAccessTime(dir_path)), TimeSpan.FromMinutes(erase_time)) >= 1)
             {
                 try
                 {
